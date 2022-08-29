@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<Title> Form </title>
+	</head>
+<body>
+
+<form>
+    Name: <input type="text" name="name" required><br>
+    E-mail Address:<input type="email" name="email" required><br>
+    Phone Number: <input pattern="\d*" name="number" required>
+<p>
+    <input type="submit" value="Publish"> <!-- form will be validated -->
+    <input type="submit" value="Save" formnovalidate> <!-- form will NOT be validated -->
+
+  <script>
+function ajaxpost () {
+  // (A) GET FORM DATA
+  var form = document.getElementById("myForm");
+  var data = new FormData(form);
+ 
+  // (B) AJAX
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "0-dummy.php");
+  // What to do when server responds
+  xhr.onload = function () { console.log(this.response); };
+  xhr.send(data);
+ 
+  // (C) PREVENT HTML FORM SUBMIT
+  return false;
+}
+</script>
+</form>
+
+</body>
+</html>
